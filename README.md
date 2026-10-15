@@ -1,10 +1,10 @@
 ### Sistema de Generación y Visualización de Placas de Parqueadero
 
 ## Contenido
-- [Descripción del proyecto](#descripción del proyecto)
-- [Componentes principales](#componentes principales)
-- [Reglas de funcionamiento](#reglas de funcionamiento)
-- [Tecnologías requeridas](tecnologías requeridas)
+- [Descripción del proyecto](#descripción-del-proyecto)
+- [Componentes principales](#componentes-principales)
+- [Reglas de funcionamiento](#reglas-de-funcionamiento)
+- [Tecnologías requeridas](#tecnologías-requeridas)
 
 ## Descripción del proyecto
 El proyecto consiste en desarrollar un sistema que genere placas de vehículos y transmita la información mediante sockets en C++, para visualizar y controlar la ocupación de las celdas de un parqueadero.
