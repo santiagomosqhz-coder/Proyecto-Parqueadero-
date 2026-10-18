@@ -56,4 +56,7 @@ class SocketServidor:
                     if not self.running:
                         break
                     print(f"[ERROR SOCKET] {e}")
-    
+
+    def detener(self):
+        self.running = False
+        print("[SERVIDOR] Detenido.")
