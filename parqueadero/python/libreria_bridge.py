@@ -26,3 +26,22 @@ class LibreriaBridge:
         self.lib.obtenerEstadoCeldas.argtypes = [ctypes.c_char_p]
         self.lib.obtenerEstadoCeldas.restype = None
 
+    def inicializar(self):
+        self.lib.inicializar()
+
+    def procesar_placa(self, placa):
+        # Buffer para recibir el resultado "CELDA|HORA|ESTADO"
+        resultado_buffer = ctypes.create_string_buffer(100)
+        self.lib.procesarPlaca(placa.encode('utf-8'), resultado_buffer)
+        
+        # Parsear el resultado
+        res_str = resultado_buffer.value.decode('utf-8')
+        if res_str == "LLENO|0|ERROR":
+            return {"error": "Lleno"}
+        
+        partes = res_str.split('|')
+        return {
+            "celda": partes[0],
+            "hora": partes[1],
+            "estado": partes[2]
+        }
