@@ -45,3 +45,14 @@ class LibreriaBridge:
             "hora": partes[1],
             "estado": partes[2]
         }
+
+    def obtener_estado_celdas(self):
+        # Buffer para recibir "1,0,1,..." (30 celdas + comas = aprox 60 chars)
+        buffer = ctypes.create_string_buffer(200)
+        self.lib.obtenerEstadoCeldas(buffer)
+        
+        res_str = buffer.value.decode('utf-8')
+        if not res_str:
+            return ["0"] * 30
+            
+        return res_str.split(',')
