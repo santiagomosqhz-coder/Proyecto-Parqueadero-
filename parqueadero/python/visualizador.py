@@ -21,3 +21,11 @@ class Visualizador:
         self.texto_secundario = "#7A9CC6"
         self.nombres = "#00E5FF"         
         self.texto_ocupada = "#050B1A"   
+
+    #actualizacion de la interfaz
+        self.root.configure(bg=self.bg_fondo)
+
+        self.celdas_widgets = {}
+
+        self._setup_ui()
+        self.actualizar_grilla()
