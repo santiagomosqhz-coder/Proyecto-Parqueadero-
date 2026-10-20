@@ -15,3 +15,14 @@ if %errorlevel% neq 0 (
 )
 echo [OK] autoparking.exe compilado con exito.
 echo.
+:: compilador de la libreria ddl
+echo [2/3] Compilando libreria.dll...
+g++ -shared -o libreria.dll libreria.cpp parqueadero.cpp -lws2_32
+if %errorlevel% neq 0 (
+    echo.
+    echo [ERROR] Error al compilar libreria.dll
+    pause
+    exit /b %errorlevel%
+)
+echo [OK] libreria.dll compilada con exito.
+echo.
