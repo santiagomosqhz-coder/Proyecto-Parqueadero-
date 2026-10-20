@@ -26,3 +26,15 @@ if %errorlevel% neq 0 (
 )
 echo [OK] libreria.dll compilada con exito.
 echo.
+
+:: 3. Copiar la DLL a la carpeta de Python
+echo [3/3] Copiando libreria.dll a ../python/...
+copy /y libreria.dll "..\python\libreria.dll" >nul
+if %errorlevel% neq 0 (
+    echo.
+    echo [ERROR] No se pudo copiar la DLL a la carpeta python.
+    pause
+    exit /b %errorlevel%
+)
+echo [OK] DLL copiada correctamente.
+echo.
