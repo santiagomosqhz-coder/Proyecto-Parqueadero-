@@ -24,4 +24,10 @@ def main():
     root.configure(bg="#0a0a0c") # Fondo exterior negro para que combine con el neón
     
     app = Visualizador(root, bridge)
+    # 3. Definir que hacer cuando llegue un mensaje por socket
+    def callback_nuevo_mensaje(placa, hora, celda, estado):
+        # Esta funcion corre en el hilo del socket.
+        # Para actualizar la UI de Tkinter de forma segura, usamos root.after()
+        root.after(0, app.agregar_evento, placa, hora, celda, estado)
+
 
