@@ -91,3 +91,48 @@ class Visualizador:
         )
         lbl_itm.pack(side="right", padx=12, pady=4)
 
+        # PARTE CENTRAL: HISTORIAL (ocupa todo el ancho) 
+        frame_historial = tk.LabelFrame(
+            main_container, text=" Historial de Eventos ",
+            padx=10, pady=10, bg=self.bg_fondo, fg=self.titulo,
+            font=("Segoe UI", 11, "bold"), highlightbackground=self.borde_panel, highlightthickness=1, bd=0
+        )
+        frame_historial.pack(fill="both", expand=True, padx=5, pady=5)
+
+        style = ttk.Style()
+        style.theme_use("clam")
+        style.configure(
+            "Treeview",
+            background=self.bg_panel,
+            fieldbackground=self.bg_panel,
+            foreground=self.texto,
+            rowheight=24,
+            bd=0
+        )
+        style.configure("Treeview.Heading", background=self.encabezado, foreground=self.texto, font=("Segoe UI", 10, "bold"))
+        style.map("Treeview.Heading", background=[("active", self.borde_panel)])
+        style.map("Treeview", background=[("selected", self.libre_borde)], foreground=[("selected", self.texto)])
+        style.configure(
+            "Vertical.TScrollbar",
+            background=self.libre_borde, troughcolor=self.bg_panel,
+            bordercolor=self.bg_panel, arrowcolor=self.texto
+        )
+
+        columnas = ("hora", "placa", "celda", "estado")
+        self.tabla = ttk.Treeview(frame_historial, columns=columnas, show="headings", height=6)
+
+        self.tabla.heading("hora", text="Hora")
+        self.tabla.heading("placa", text="Placa")
+        self.tabla.heading("celda", text="Celda")
+        self.tabla.heading("estado", text="Estado")
+
+        self.tabla.column("hora", width=90, anchor="center")
+        self.tabla.column("placa", width=120, anchor="center")
+        self.tabla.column("celda", width=80, anchor="center")
+        self.tabla.column("estado", width=120, anchor="center")
+
+        scrollbar = ttk.Scrollbar(frame_historial, orient="vertical", command=self.tabla.yview)
+        self.tabla.configure(yscroll=scrollbar.set)
+
+        self.tabla.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
