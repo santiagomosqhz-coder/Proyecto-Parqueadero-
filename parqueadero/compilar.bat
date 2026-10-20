@@ -38,3 +38,12 @@ if %errorlevel% neq 0 (
 )
 echo [OK] DLL copiada correctamente.
 echo.
+
+cd ..
+
+echo ===================================================
+echo   PROCESO COMPLETADO EXITOSAMENTE
+echo ===================================================
+echo Puedes cerrar esta ventana.
+echo.
+pause
