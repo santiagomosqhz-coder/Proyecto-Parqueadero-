@@ -136,3 +136,8 @@ class Visualizador:
 
         self.tabla.pack(side="left", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")
+
+    def _marcar_ocupada(self, widget, texto):
+        widget["frame"].configure(bg=self.ocupada, highlightbackground=self.ocupada)
+        widget["placa_label"].configure(text=texto, bg=self.ocupada, fg=self.texto_ocupada, font=("Segoe UI", 9, "bold"))
+        widget["num_label"].configure(bg=self.ocupada, fg=self.texto_ocupada)
