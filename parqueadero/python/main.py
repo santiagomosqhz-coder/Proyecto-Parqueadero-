@@ -30,4 +30,8 @@ def main():
         # Para actualizar la UI de Tkinter de forma segura, usamos root.after()
         root.after(0, app.agregar_evento, placa, hora, celda, estado)
 
+    # 4. Iniciar el servidor socket
+    servidor = SocketServidor()
+    servidor.iniciar(callback_nuevo_mensaje)
+
 
