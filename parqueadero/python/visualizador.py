@@ -141,3 +141,9 @@ class Visualizador:
         widget["frame"].configure(bg=self.ocupada, highlightbackground=self.ocupada)
         widget["placa_label"].configure(text=texto, bg=self.ocupada, fg=self.texto_ocupada, font=("Segoe UI", 9, "bold"))
         widget["num_label"].configure(bg=self.ocupada, fg=self.texto_ocupada)
+
+    def _marcar_libre(self, widget):
+        widget["frame"].configure(bg=self.libre_fondo, highlightbackground=self.libre_borde)
+        widget["placa_label"].configure(text="LIBRE", bg=self.libre_fondo, fg=self.texto_secundario, font=("Segoe UI", 10, "bold"))
+        widget["num_label"].configure(bg=self.libre_fondo, fg=self.texto)
+
