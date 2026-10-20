@@ -147,3 +147,32 @@ class Visualizador:
         widget["placa_label"].configure(text="LIBRE", bg=self.libre_fondo, fg=self.texto_secundario, font=("Segoe UI", 10, "bold"))
         widget["num_label"].configure(bg=self.libre_fondo, fg=self.texto)
 
+    def agregar_evento(self, placa, hora, celda, estado):
+        self.tabla.insert("", 0, values=(hora, placa, celda, estado), tags=('neon_row',))
+        self.tabla.tag_configure('neon_row', foreground=self.texto)
+
+        if len(self.tabla.get_children()) > 50:
+            ultimo = self.tabla.get_children()[-1]
+            self.tabla.delete(ultimo)
+
+        try:
+            idx = int(celda) - 1
+            if 0 <= idx < 27:
+                widget = self.celdas_widgets[idx]
+
+                if estado == "ENTRADA":
+                    self._marcar_ocupada(widget, f"OCUPADA\n{placa}")
+                else:
+                    self._marcar_libre(widget)
+        except ValueError:
+            pass
+
+    def actualizar_grilla(self):
+        estados = self.bridge.obtener_estado_celdas()
+        for i, estado_bit in enumerate(estados):
+            if i >= 27: break
+            widget = self.celdas_widgets[i]
+            if estado_bit == "1":
+                self._marcar_ocupada(widget, "OCUPADA")
+            else:
+                self._marcar_libre(widget)
