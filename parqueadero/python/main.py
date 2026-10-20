@@ -18,3 +18,10 @@ def main():
     except Exception as e:
         print(f"[ERROR] No se pudo inicializar la DLL: {e}")
         return
+    # 2. Crear la ventana principal de Tkinter (Estilo Negro Cyberpunk)
+    root = tk.Tk()
+    root.title("Sistema de Parqueadero — En vivo")
+    root.configure(bg="#0a0a0c") # Fondo exterior negro para que combine con el neón
+    
+    app = Visualizador(root, bridge)
+
