@@ -29,3 +29,8 @@ class Visualizador:
 
         self._setup_ui()
         self.actualizar_grilla()
+    #contenedor principal de la celdas
+    def _setup_ui(self):
+        main_container = tk.Frame(self.root, bg=self.bg_fondo, padx=10, pady=10)
+        main_container.pack(fill="both", expand=True)
+    
