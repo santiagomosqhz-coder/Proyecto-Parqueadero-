@@ -35,3 +35,13 @@ def main():
     servidor.iniciar(callback_nuevo_mensaje)
 
 
+    # 5. Loop principal de la interfaz
+    try:
+        root.mainloop()
+    finally:
+        # Limpieza al cerrar
+        print("Cerrando servidor...")
+        servidor.detener()
+
+if __name__ == "__main__":
+    main()
